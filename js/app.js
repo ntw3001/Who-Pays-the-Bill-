@@ -16,10 +16,28 @@ createApp({
     const throwOnPile = () => {
       const friendName = data.inputName;
 
+      if(validate(friendName)){
       data.names.push(friendName);
-      data.friendName = '';
-      
+      data.inputName = '';
+      data.showError = false;
+      } else {
+        data.showError = true;
+      }
       console.log(data.names);
+    }
+
+    const validate = (value) => {
+      if(value === ''){
+        data.error = 'A true friend should have a name!';
+        return false;
+      }
+
+      if(data.names.includes(value)){
+        data.error = 'You can\'t have two friends with the same name!';
+        return false;
+      }
+
+      return true;
     }
 
     const removeName = (index) => {
