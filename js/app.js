@@ -14,11 +14,20 @@ createApp({
     const data = reactive(defaultState);
 
     const throwOnPile = () => {
+      const friendName = data.inputName;
 
+      data.names.push(friendName);
+      data.friendName = '';
+      
+      console.log(data.names);
+    }
+
+    const removeName = (index) => {
+      data.names.splice(index, 1);
     }
 
     return {
-      data
+      data, throwOnPile, removeName
      }
   }
 }).mount('#app');
