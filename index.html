@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>HTML 5 Boilerplate</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Worst friend measurer</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +16,16 @@
   <body>
 
     <div id ="app">
-
+      <div id="names" class="container" v-if="data.state">
+        <div class="logo">
+          <h1>Who worst friend?</h1>
+      </div>
+      <div id="input">
+        <input type="text" v-model.trim/>
+        <button @click="throwOnPile">throw on pile</button>
+      <div id="result" class="container" v-if="!data.state">
+        Result
+      </div>
     </div>
 
 	  <script src="js/app.js">
