@@ -45,11 +45,31 @@
           </div>
         </div>
 
-        <div id="result" class="container" v-if="!data.state">
-        Result
-        </div>
+        <div v-if="isReady"
+          class="animate__animated animate__bounceIn"
+        >
+          <div class="action_button" @click="showResults">
+            Find your worst friend!
+          </div>
       </div>
     </div>
+
+    <div id="result" class="container" v-if="!data.state">
+      <div class ="result_container">
+        <h1>Your worst friend is</h1>
+          <div class="result_value">
+            {{ data.result }}
+          </div>
+          <div class="action_button" @click="reset">
+            Punish again?
+          </div>
+          <br/>
+          <div class=" action_button" @click="resetAll">
+            reset
+          </div>
+      </div>
+    </div>
+</div>
 
 	  <script src="js/app.js"></script>
 

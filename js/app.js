@@ -13,6 +13,10 @@ createApp({
   setup(){
     const data = reactive(defaultState);
 
+    const isReady = computed(() => {
+      return data.names.length > 0;
+    });
+
     const throwOnPile = () => {
       const friendName = data.inputName;
 
@@ -44,8 +48,22 @@ createApp({
       data.names.splice(index, 1);
     }
 
+    const getName = () => {
+      return data.names[Math.floor(Math.random() * data.names.length)];
+    }
+
+    const worstFriend = function () {
+      let rand = getName()
+      data.result = rand;
+    }
+
+    const showResults = () => {
+      worstFriend()
+      data.state = false;
+    }
+
     return {
-      data, throwOnPile, removeName
+      data, throwOnPile, removeName, isReady, showResults, worstFriend
      }
   }
 }).mount('#app');
