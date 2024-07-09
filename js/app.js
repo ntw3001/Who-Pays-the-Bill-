@@ -53,7 +53,13 @@ createApp({
     }
 
     const worstFriend = function () {
-      let rand = getName()
+      let rand = getName();
+
+      if(data.result!== ""){
+        while(rand === data.result){
+          rand = getName();
+        }
+      }
       data.result = rand;
     }
 
@@ -62,8 +68,21 @@ createApp({
       data.state = false;
     }
 
+    const resetAll = () => {
+        data.state = true;
+        data.inputName ='';
+        data.names = [];
+        data.error = '';
+        data.showError = false;
+        data.result = '';
+      }
+
+      const newWorstFriend = () => {
+        worstFriend();
+      }
+
     return {
-      data, throwOnPile, removeName, isReady, showResults, worstFriend
+      data, throwOnPile, removeName, isReady, showResults, worstFriend, newWorstFriend, resetAll
      }
   }
 }).mount('#app');
